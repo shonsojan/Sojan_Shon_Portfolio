@@ -1,0 +1,16 @@
+#player-container {
+  margin: 50px 0;
+}
+:root {
+  --plyr-color-main: rgb(228, 228, 228);
+  --plyr-control-icon-size: 25px;
+  --plyr-control-radius: 13px;
+  --plyr-font-family: Helvetica, Arial, sans-serif;
+  --plyr-control-spacing: 1.8%;
+  --plyr-video-control-color: #f5b553;
+  --plyr-video-controls-background: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75)
+  );
+  --plyr-video-control-color-hover: #f5b553;
+}

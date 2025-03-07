@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link href="css/grid.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <title>Shon Sojan</title>
+
+    <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
+    ></script>
+  </head>
+  <body>
+    <header class="sticky">
+      <h1 class="hidden">Portfolio</h1>
+      <h2 class="hidden">Shon Sojan</h2>
+      <div class="logo">
+        <img id="logo" src="images/logo.svg" alt="logo" />
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.php">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.php#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="hamburger">&#9776;</button>
+      <div id="menu" class="overlay">
+        <button id="close">&times;</button>
+        <nav>
+          <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.php#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="full-width-grid-con col-span-full black-bg2">
+        <div class="grid-con col-span-full">
+          <div
+            class="col-span-full m-col-start-1 m-col-end-7 l-col-start-1 l-col-end-7"
+          >
+            <h3>Who am I?</h3>
+            <p>
+              My name is <span> Shon Sojan. </span><br />
+              I'm a designer and developer originally from Kerala, India, now
+              based in Canada. I completed my high school diploma at SMSNHSS
+              Vaikom, Kerala, and am currently furthering my expertise in
+              Interactive Media Design.<br /><br />
+              I specialize in HTML, CSS, and JavaScript, and I'm proficient in
+              design tools like Adobe Photoshop, XD and Cinema 4D.
+            </p>
+          </div>
+
+          <div
+            class="col-span-full m-col-start-8 m-col-end-13 l-col-start-8 l-col-end-13"
+          >
+            <img src="images/profile.png" />
+          </div>
+        </div>
+      </section>
+      <section class="yellow-bg2 col-span-full">
+        <h3 class="col-span-full">SKILLS</h3>
+        <div class="skills grid-con">
+          <div
+            class="col-span-full m-col-start-1 m-col-end-5 l-col-start-1 l-col-end-5"
+          >
+            <h4>Design</h4>
+            <p>
+              Adobe XD<br />
+
+              Photoshop<br />
+
+              Illustrator
+            </p>
+          </div>
+          <div
+            class="col-span-full m-col-start-5 m-col-end-9 l-col-start-5 l-col-end-9"
+          >
+            <h4>Front-End</h4>
+            <p>
+              HTML5 <br />
+              CSS3 <br />
+              SASS <br />
+              JavaScript
+            </p>
+          </div>
+          <div
+            class="col-span-full m-col-start-9 m-col-end-13 l-col-start-9 l-col-end-13"
+          >
+            <h4>Motion Graphics</h4>
+            <p>
+              Cinema 4D <br />
+
+              Premier Pro <br />
+
+              After Effects
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <p>&copy;2024 All rights reserved</p>
+      <div id="media">
+        <img src="images/media1.svg" alt="socialmedia-icon" />
+        <img src="images/media2.svg" alt="socialmedia-icon" />
+      </div>
+    </footer>
+    <script defer src="js/main.js"></script>
+  </body>
+</html>

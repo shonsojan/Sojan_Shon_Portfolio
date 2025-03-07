@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="29" viewBox="0 0 30 29">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_77" data-name="Rectangle 77" width="30" height="29" transform="translate(-0.3 0.25)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(0.3 -0.25)" clip-path="url(#clip-path)">
+    <g id="SVGRepo_iconCarrier" transform="translate(1.289 -0.442)">
+      <g id="c133de6af664cd4f011a55de6b001b19" transform="translate(0 0)">
+        <path id="Path_1" data-name="Path 1" d="M29.851.061,27.38,26.825,16.674,29.707,5.969,26.825,3.5.061ZM24.872,5.5H8.312l.4,3.232h8.4l-.447.186L9,12.112l.254,3.159,7.408.024,3.971.013-.254,4.212-3.716,1.046v0l-.03.008-3.589-.906-.218-2.615H9.474L9.91,22.1l6.755,2v0l.012,0L23.4,22.135l.871-10.023H16.646l.019-.008,7.88-3.369Z" transform="translate(-3.498 -0.061)" fill="#fff" stroke="#fff" stroke-width="0.121"/>
+      </g>
+    </g>
+  </g>
+</svg>
