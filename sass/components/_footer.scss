@@ -1,0 +1,26 @@
+@use "../abstracts" as a;
+
+footer {
+  background-color: #efefef;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  color: #000;
+  margin-left: 20px;
+}
+
+#media img {
+  margin-right: 20px;
+}
+
+footer #media img {
+  transition: filter 0.2s ease;
+}
+
+footer #media img:hover {
+  filter: brightness(0) saturate(100%) invert(60%);
+}
