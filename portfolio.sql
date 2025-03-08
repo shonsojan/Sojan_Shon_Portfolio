@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE enquiries (
   id int UNSIGNED NOT NULL,
-  last_name varchar(500) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NOT NULL,
+  last_name varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   first_name varchar(300) NOT NULL,
-  email varchar(500) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NOT NULL,
+  email varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   message varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table enquiries
@@ -66,11 +66,11 @@ CREATE TABLE media (
   id int UNSIGNED NOT NULL,
   project_id int UNSIGNED NOT NULL,
   type varchar(500) NOT NULL,
-  image1 varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8_general_ci NOT NULL,
+  image1 varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   image2 varchar(1000) NOT NULL,
   image3 varchar(1000) NOT NULL,
   image4 varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table media
@@ -97,7 +97,7 @@ CREATE TABLE projects (
   description varchar(1500) NOT NULL,
   challeges varchar(1500) NOT NULL,
   solution varchar(1500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table projects
@@ -121,7 +121,7 @@ CREATE TABLE project_technology (
   id int UNSIGNED NOT NULL,
   project_id int UNSIGNED NOT NULL,
   technology_id int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table project_technology
@@ -144,7 +144,7 @@ INSERT INTO project_technology (id, project_id, technology_id) VALUES
 CREATE TABLE technology (
   id int UNSIGNED NOT NULL,
   name varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table technology
@@ -165,7 +165,7 @@ CREATE TABLE `user` (
   id int NOT NULL,
   username varchar(100) NOT NULL,
   password varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table user
