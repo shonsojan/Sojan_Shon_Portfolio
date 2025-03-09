@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once('includes/connect_general.php');
+require_once('includes/connect.php');
 $query = 'SELECT * FROM projects, media WHERE project_id = projects.id AND projects.id = :projectid';
 $stmt = $connection->prepare($query);
 $projectid = $_GET['id'];
