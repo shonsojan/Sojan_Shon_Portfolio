@@ -18,7 +18,7 @@
 
     <?php
 
-require_once('includes/connect_general.php');
+require_once('includes/connect.php');
 
 
 
