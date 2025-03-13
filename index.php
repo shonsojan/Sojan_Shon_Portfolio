@@ -160,7 +160,7 @@ echo'</a>';
           <span>TOGETHER</span>
         </h2>
         <div class="center col-span-full grid-con">
-          <form class="col-span-full" id="contactForm" method="post" action="send_mail.php">
+          <form class="col-span-full" id="contactForm" method="post" action="admin/send_mail.php">
 
     <label for="first_name">First Name: </label>
     <input type="text" name="first_name" id="first_name">
@@ -188,6 +188,60 @@ echo'</a>';
 </form>
         </div>
       </section>
+
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); 
+            
+            const firstName = document.getElementById("first_name").value.trim();
+            const lastName = document.getElementById("last_name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            const feedbackSection = document.getElementById("feedback");
+
+            let errors = [];
+
+            if (!firstName) errors.push("First Name is required.");
+            if (!lastName) errors.push("Last Name is required.");
+            if (!email) errors.push("Email is required.");
+            if (!message) errors.push("Message is required.");
+
+            if (errors.length > 0) {
+                feedbackSection.innerHTML = `<p style="color: red;">${errors.join("<br>")}</p>`;
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("first_name", firstName);
+            formData.append("last_name", lastName);
+            formData.append("email", email);
+            formData.append("message", message);
+
+            fetch("admin/send_mail.php", {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                feedbackSection.innerHTML = `<p style="color: green;">${data}</p>`;
+                form.reset(); 
+            })
+            .catch(error => {
+                feedbackSection.innerHTML = `<p style="color: red;">Error submitting form. Try again.</p>`;
+                console.error("Error:", error);
+            });
+        });
+    } else {
+        console.error("Form with ID 'contactForm' not found!");
+    }
+});
+</script>
+
+
     </main>
     <!-- Footer -->
     <footer>

@@ -2,45 +2,37 @@
 require_once('../includes/connect.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Generate a unique, web-safe name for the image
     $random = rand(10000, 99999);
     $newname = 'image' . $random;
 
-    // Get the file extension
     $filetype = strtolower(pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION));
 
-    // Normalize and validate file type
     if ($filetype == 'jpeg') {
         $filetype = 'jpg';
     }
     $allowed_types = ['jpg', 'png', 'gif'];
     if (!in_array($filetype, $allowed_types)) {
-        die('Sorry, only JPG, PNG, and GIF files are allowed.');
+        die('<div class="alert alert-danger">Sorry, only JPG, PNG, and GIF files are allowed.</div>');
     }
 
-    // Check file size (500KB limit)
     if ($_FILES['img']['size'] > 500000) {
-        die('Sorry, your file is too large.');
+        die('<div class="alert alert-danger">Sorry, your file is too large.</div>');
     }
 
-    // Append the extension
     $newname .= '.' . $filetype;
     $target_file = '../images/' . $newname;
 
-    // Move the file and insert into the database
     if (move_uploaded_file($_FILES['img']['tmp_name'], $target_file)) {
-        // PDO database insert with all required columns
-        $query = "INSERT INTO projects (name, image, description, challeges, solution) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO projects (name, image, description, challenges, solution) VALUES (?, ?, ?, ?, ?)";
+
         $stmt = $connection->prepare($query);
 
-        // Form data
         $title = trim($_POST['title']);
         $desc = trim($_POST['desc']);
         $image = $newname;
 
-        // Placeholder values for challeges and solution (update form to collect these later)
-        $challeges = "To be updated"; // Temporary placeholder
-        $solution = "To be updated";  // Temporary placeholder
+        $challenges = trim($_POST['challenges']);
+        $solution = trim($_POST['solution']);
 
         $stmt->bindParam(1, $title, PDO::PARAM_STR);
         $stmt->bindParam(2, $image, PDO::PARAM_STR);
@@ -51,25 +43,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $stmt->execute();
             $lastid = $connection->lastInsertId();
-            echo "Project added with ID: " . $lastid; // Optional: for debugging
-            header('Location: project_list.php');
+            echo '<div class="alert alert-success">Project added successfully! Project ID: ' . $lastid . '</div>';
+            header('Refresh: 1; URL=project_list.php');
             exit();
         } catch (PDOException $e) {
-            die("Database error: " . $e->getMessage());
+            die('<div class="alert alert-danger">Database error: ' . $e->getMessage() . '</div>');
         }
-
         $stmt = null;
     } else {
-        // Check why the upload failed
-        if (!isset($_FILES['img']) || $_FILES['img']['error'] == UPLOAD_ERR_NO_FILE) {
-            die("No file was uploaded.");
-        } elseif ($_FILES['img']['error'] != UPLOAD_ERR_OK) {
-            die("Upload error: " . $_FILES['img']['error']);
-        } else {
-            die("Failed to move uploaded file. Check directory permissions for '../images/'.");
-        }
+        die('<div class="alert alert-danger">Failed to upload file. Check directory permissions.</div>');
     }
-} else {
-    die("Invalid request method.");
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center">Add New Project</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label">Project Title</label>
+            <input type="text" name="title" id="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <textarea name="desc" id="desc" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="challenges" class="form-label">Challenges</label>
+            <textarea name="challenges" id="challenges" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="solution" class="form-label">Solution</label>
+            <textarea name="solution" id="solution" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="img" class="form-label">Upload Image</label>
+            <input type="file" name="img" id="img" class="form-control" accept=".jpg, .png, .gif" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Project</button>
+    </form>
+</div>
+
+</body>
+</html>
