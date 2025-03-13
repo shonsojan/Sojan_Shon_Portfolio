@@ -162,22 +162,22 @@ echo'</a>';
         <div class="center col-span-full grid-con">
           <form class="col-span-full" id="contactForm" method="post" action="admin/send_mail.php">
 
-    <label for="first_name">First Name: </label>
+    <label for="first_name">First Name* </label>
     <input type="text" name="first_name" id="first_name">
 
 <br><br>
 
-    <label for="last_name">Last Name: </label>
+    <label for="last_name">Last Name* </label>
     <input type="text" name="last_name" id="last_name">
 
     <br><br>
 
-    <label for="email">Email: </label>
+    <label for="email">Email* </label>
     <input type="text" name="email" id="email">
 
     <br><br>
 
-    <label for="message">Message: </label>
+    <label for="message">Message </label>
     <textarea name="message" id="message">comment here</textarea>
 
     <br><br>
@@ -191,17 +191,17 @@ echo'</a>';
 
       <script>
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
+    const form = document.querySelector("#contactForm");
 
     if (form) {
         form.addEventListener("submit", function (event) {
             event.preventDefault(); 
             
-            const firstName = document.getElementById("first_name").value.trim();
-            const lastName = document.getElementById("last_name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const message = document.getElementById("message").value.trim();
-            const feedbackSection = document.getElementById("feedback");
+            const firstName = document.querySelector("#first_name").value.trim();
+            const lastName = document.querySelector("#last_name").value.trim();
+            const email = document.querySelector("#email").value.trim();
+            const message = document.querySelector("#message").value.trim();
+            const feedbackSection = document.querySelector("#feedback");
 
             let errors = [];
 
