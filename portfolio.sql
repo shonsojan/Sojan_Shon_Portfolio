@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `portfolio`
@@ -34,7 +34,7 @@ CREATE TABLE `contacts` (
   `email` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `submitted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `contacts`
@@ -52,11 +52,11 @@ INSERT INTO `contacts` (`id`, `first_name`, `last_name`, `email`, `message`, `su
 
 CREATE TABLE `enquiries` (
   `id` int UNSIGNED NOT NULL,
-  `last_name` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `last_name` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `first_name` varchar(300) NOT NULL,
-  `email` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `email` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `message` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `enquiries`
@@ -89,11 +89,11 @@ CREATE TABLE `media` (
   `id` int UNSIGNED NOT NULL,
   `project_id` int UNSIGNED NOT NULL,
   `type` varchar(500) NOT NULL,
-  `image1` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `image1` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `image2` varchar(1000) NOT NULL,
   `image3` varchar(1000) NOT NULL,
   `image4` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `media`
@@ -122,7 +122,7 @@ CREATE TABLE `projects` (
   `solution` varchar(1500) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `projects`
@@ -147,7 +147,7 @@ CREATE TABLE `project_technology` (
   `id` int UNSIGNED NOT NULL,
   `project_id` int UNSIGNED NOT NULL,
   `technology_id` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `project_technology`
@@ -198,7 +198,7 @@ INSERT INTO `tbl_users` (`user_id`, `user_lname`, `user_fname`, `user_city`, `us
 CREATE TABLE `technology` (
   `id` int UNSIGNED NOT NULL,
   `name` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `technology`
@@ -225,7 +225,7 @@ CREATE TABLE `user` (
   `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
