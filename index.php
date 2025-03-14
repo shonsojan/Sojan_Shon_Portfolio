@@ -164,22 +164,22 @@ echo'</a>';
         <div class="center col-span-full grid-con">
           <form class="col-span-full" id="contactForm" method="post" action="">
 
-    <label for="first_name">First Name: </label>
+    <label for="first_name">First Name* </label>
     <input type="text" name="first_name" id="first_name">
 
 <br><br>
 
-    <label for="last_name">Last Name: </label>
+    <label for="last_name">Last Name* </label>
     <input type="text" name="last_name" id="last_name">
 
     <br><br>
 
-    <label for="email">Email: </label>
+    <label for="email">Email* </label>
     <input type="text" name="email" id="email">
 
     <br><br>
 
-    <label for="message">Message: </label>
+    <label for="message">Message* </label>
     <textarea name="message" id="message">comment here</textarea>
 
     <br><br>
