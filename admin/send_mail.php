@@ -37,7 +37,7 @@ if (!empty($errors)) {
 }
 
 try {
-    $querystring = "INSERT INTO contacts (first_name, last_name, email, message) VALUES (:first_name, :last_name, :email, :message)";
+    $querystring = "INSERT INTO enquiries (first_name, last_name, email, message) VALUES (:first_name, :last_name, :email, :message)";
     $stmt = $connection->prepare($querystring);
 
     $executed = $stmt->execute([

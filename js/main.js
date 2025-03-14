@@ -25,16 +25,6 @@
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(ScrollToPlugin);
 
-  
-
-
-
-
-
-
-
-
-
   // GSAP Animations
   // 1. Header Logo Animation (on page load)
   gsap.from("logo", {
