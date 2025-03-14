@@ -1,4 +1,4 @@
-# Shon Portfolio Website
+# Shon Sojan Portfolio Website
 
 ## 📑 Table of Contents
 
