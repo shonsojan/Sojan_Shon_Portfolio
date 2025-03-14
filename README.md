@@ -1,4 +1,4 @@
-# Shon Sojan Portfolio Website
+# Shon Portfolio Website
 
 ## 📑 Table of Contents
 
@@ -25,7 +25,6 @@ This is my personal portfolio website showcasing my skills, projects, and backgr
 - CSS
 - SASS
 - JavaScript
-- Php
 
 ## 📚 Usage
 
