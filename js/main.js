@@ -25,57 +25,15 @@
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(ScrollToPlugin);
 
-  // Contact
+  
 
-  function regForm(event) {
-    event.preventDefault();
-    //console.log("regForm Called");
-    const thisform = event.currentTarget;
-    const url = "send_mail.php";
-    //console.log(thisform.elements);
-    const formdata =
-      "last_name=" +
-      thisform.elements.lname.value +
-      "&first_name=" +
-      thisform.elements.fname.value +
-      "&email=" +
-      this.elements.email.value +
-      "&message=" +
-      this.elements.message.value;
-    console.log(formdata);
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formdata,
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        feedback.innerHTML = "";
-        if (response.errors) {
-          response.errors.forEach((error) => {
-            const errorElement = document.createElement("p");
-            errorElement.textContent = error;
-            feedback.appendChild(errorElement);
-          });
-        } else {
-          form.reset();
-          const messageElement = document.createElement("p");
-          messageElement.textContent = response.message;
-          feedback.appendChild(messageElement);
-        }
-        feedback.scrollIntoView({ behavior: "smooth", block: "end" });
-      })
-      .catch((error) => {
-        console.log(error);
-        feedback.innerHTML = "";
-        feedback.innerHTML = `<p>Sorry there seems to be an issue. Either you're using an older browser or javascript is disabled.</p>`;
-      });
-  }
 
-  form.addEventListener("submit", regForm);
+
+
+
+
+
+
 
   // GSAP Animations
   // 1. Header Logo Animation (on page load)

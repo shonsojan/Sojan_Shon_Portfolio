@@ -232,15 +232,7 @@ $stmt->execute();
 </head>
 
 <body>
-    <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <a href="dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-        <a href="dashboard.php"><i class="fas fa-users"></i> Users</a>
-        <a href="dashboard.php"><i class="fas fa-project-diagram"></i> Projects</a>
-        <a href="dashboard.php"><i class="fas fa-address-book"></i> Contacts</a>
-
-        <a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    </div>
+    
 
     <div class="main-content">
         <div class="top-bar">

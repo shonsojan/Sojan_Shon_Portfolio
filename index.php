@@ -9,12 +9,16 @@
     <title>Shon Sojan</title>
 
     <script defer src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
 
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-<script defer src="js/main.js"></script>
+
 
     <?php
 
@@ -160,86 +164,77 @@ echo'</a>';
           <span>TOGETHER</span>
         </h2>
         <div class="center col-span-full grid-con">
-          <form class="col-span-full" id="contactForm" method="post" action="admin/send_mail.php">
+          <form class="col-span-full" id="contactForm" method="post" action="">
 
-    <label for="first_name">First Name* </label>
+    <label for="first_name">First Name: </label>
     <input type="text" name="first_name" id="first_name">
 
 <br><br>
 
-    <label for="last_name">Last Name* </label>
+    <label for="last_name">Last Name: </label>
     <input type="text" name="last_name" id="last_name">
 
     <br><br>
 
-    <label for="email">Email* </label>
+    <label for="email">Email: </label>
     <input type="text" name="email" id="email">
 
     <br><br>
 
-    <label for="message">Message </label>
+    <label for="message">Message: </label>
     <textarea name="message" id="message">comment here</textarea>
 
     <br><br>
 
     <input type="submit" value="send">
     <br>
+    <?php if (isset($_GET['message'])): ?>
+    <div style="color: <?php echo $_GET['success'] == 'true' ? 'green' : 'red'; ?>;">
+        <?php echo htmlspecialchars($_GET['message']); ?>
+    </div>
+<?php endif; ?>
     <section id="feedback"><p>*Please fill out all required sections</p></section>
 </form>
         </div>
       </section>
+      <?php
+require_once('includes/connect.php');
 
-      <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("#contactForm");
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    header('Content-Type: application/json'); // Ensure JSON response
 
-    if (form) {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); 
-            
-            const firstName = document.querySelector("#first_name").value.trim();
-            const lastName = document.querySelector("#last_name").value.trim();
-            const email = document.querySelector("#email").value.trim();
-            const message = document.querySelector("#message").value.trim();
-            const feedbackSection = document.querySelector("#feedback");
+    try {
+        $errors = [];
 
-            let errors = [];
+        if (empty($_POST['first_name'])) {
+            $errors[] = "First Name is required.";
+        }
+        if (empty($_POST['last_name'])) {
+            $errors[] = "Last Name is required.";
+        }
+        if (empty($_POST['email'])) {
+            $errors[] = "Email is required.";
+        }
+        if (empty($_POST['message'])) {
+            $errors[] = "Message is required.";
+        }
 
-            if (!firstName) errors.push("First Name is required.");
-            if (!lastName) errors.push("Last Name is required.");
-            if (!email) errors.push("Email is required.");
-            if (!message) errors.push("Message is required.");
+        if (!empty($errors)) {
+          header("Location: index.php?success=false&message=" . urlencode(implode(", ", $errors)));
+          exit;
+      }
 
-            if (errors.length > 0) {
-                feedbackSection.innerHTML = `<p style="color: red;">${errors.join("<br>")}</p>`;
-                return;
-            }
+      $stmt = $connection->prepare("INSERT INTO contacts (first_name, last_name, email, message) VALUES (?, ?, ?, ?)");
+      $stmt->execute([$_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['message']]);
 
-            const formData = new FormData();
-            formData.append("first_name", firstName);
-            formData.append("last_name", lastName);
-            formData.append("email", email);
-            formData.append("message", message);
-
-            fetch("admin/send_mail.php", {
-                method: "POST",
-                body: formData,
-            })
-            .then(response => response.text())
-            .then(data => {
-                feedbackSection.innerHTML = `<p style="color: green;">${data}</p>`;
-                form.reset(); 
-            })
-            .catch(error => {
-                feedbackSection.innerHTML = `<p style="color: red;">Error submitting form. Try again.</p>`;
-                console.error("Error:", error);
-            });
-        });
-    } else {
-        console.error("Form with ID 'contactForm' not found!");
-    }
-});
-</script>
+      header("Location: index.php?success=true&message=" . urlencode("Email sent successfully!"));
+      exit;
+  } catch (PDOException $e) {
+      header("Location: index.php?success=false&message=" . urlencode("Database error: " . $e->getMessage()));
+      exit;
+  }
+}
+?>
 
 
     </main>
@@ -255,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </a>
       </div>
     </footer>
+    <script src="js/contact.js" defer></script>
 
   </body>
 </html>

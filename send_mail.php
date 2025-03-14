@@ -5,7 +5,7 @@
     $db_host = 'localhost:8889';
     $db_user = 'root';
     $db_pass = 'root';
-    $db_name = 'portfolio1';
+    $db_name = 'portfolio';
 
     $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
     $errors = array();
