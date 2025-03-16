@@ -95,7 +95,7 @@ $stmt = null;
         <div class="col-span-full">
           <h3>Challenges</h3>
           <p>
-          <?php echo $row['challenges']; ?>
+          <?php echo $row['challeges']; ?>
           </p>
         </div>
         <div class="col-span-full">

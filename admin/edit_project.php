@@ -26,17 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
 
         if (!in_array($imageFileType, $allowedTypes)) {
-            die('<div>Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.</div>');
+            die('<div class="container mt-5 text-danger">Invalid file type. Only JPG, JPEG, PNG, and GIF are allowed.</div>');
         }
 
         if (getimagesize($_FILES['thumb']['tmp_name']) === false) {
-            die('<div>File is not a valid image.</div>');
+            die('<div class="container mt-5 text-danger">File is not a valid image.</div>');
         }
 
         if (move_uploaded_file($_FILES['thumb']['tmp_name'], $targetFilePath)) {
             $image = $newFileName;
         } else {
-            die('<div>Error uploading image.</div>');
+            die('<div class="container mt-5 text-danger">Error uploading image.</div>');
         }
     }
 
