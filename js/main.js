@@ -25,27 +25,19 @@
   gsap.registerPlugin(ScrollTrigger);
   gsap.registerPlugin(ScrollToPlugin);
 
-  
   document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
     const close = document.getElementById("close");
 
     hamburger.addEventListener("click", function () {
-        menu.classList.add("active");
+      menu.classList.add("active");
     });
 
     close.addEventListener("click", function () {
-        menu.classList.remove("active");
+      menu.classList.remove("active");
     });
-});
-
-
-
-
-
-
-
+  });
 
   // GSAP Animations
   // 1. Header Logo Animation (on page load)

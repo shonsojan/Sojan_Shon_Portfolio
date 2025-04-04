@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
@@ -39,13 +40,14 @@ $stmt->execute();
       <h1 class="hidden">Portfolio</h1>
       <h2 class="hidden">Shon Sojan</h2>
       <div class="logo">
-        <img id="logo" src="images/logo.svg" alt="logo" />
+      <a href="index.php"><img id="logo" src="images/logo.svg" alt="logo" /></a>
       </div>
       <nav>
         <ul class="nav-list">
           <li><a href="index.php">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="images/Sojan_Shon_Resume.pdf" class="resume" download>Resume</a></li>
         </ul>
       </nav>
 
@@ -57,6 +59,7 @@ $stmt->execute();
             <li><a href="index.php">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="images/Sojan_Shon_Resume.pdf" class="resume" download>Resume</a></li>
           </ul>
         </nav>
 </div>
@@ -166,23 +169,23 @@ echo'</a>';
         <div class="center col-span-full grid-con">
           <form class="col-span-full" id="contactForm" method="post" action="">
 
-    <label for="first_name">First Name: </label>
+    <label for="first_name"><span class="required">*</span>First Name: </label>
     <input type="text" name="first_name" id="first_name">
 
 <br><br>
 
-    <label for="last_name">Last Name: </label>
+    <label for="last_name"><span class="required">*</span>Last Name: </label>
     <input type="text" name="last_name" id="last_name">
 
     <br><br>
 
-    <label for="email">Email: </label>
+    <label for="email"><span class="required">*</span>Email: </label>
     <input type="text" name="email" id="email">
 
     <br><br>
 
-    <label for="message">Message: </label>
-    <textarea name="message" id="message">comment here</textarea>
+    <label for="message"><span class="required">*</span>Message: </label>
+    <textarea name="message" id="message" placeholder="comment here"></textarea>
 
     <br><br>
 
@@ -193,7 +196,7 @@ echo'</a>';
         <?php echo htmlspecialchars($_GET['message']); ?>
     </div>
 <?php endif; ?>
-    <section id="feedback"><p>*Please fill out all required sections</p></section>
+    <section id="feedback"><p><span class="required">*</span>Please fill out all required sections</p></section>
 </form>
         </div>
       </section>
