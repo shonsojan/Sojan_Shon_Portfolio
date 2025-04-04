@@ -115,7 +115,7 @@ $stmt->execute();
       <!-- WORKS -->
 
       <section class="full-width-grid-con col-span-full yellow-bg">
-        <h2 class="col-span-full">SELECETED<br />PROJECTS</h2>
+        <h2 class="col-span-full">SELECTED<br />PROJECTS</h2>
         <div class=".project col-span-full grid-con">
 
         
